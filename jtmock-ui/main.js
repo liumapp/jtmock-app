@@ -17,6 +17,21 @@ function createWindow () {
 
 app.whenReady().then(createWindow)
 
+
+const template = [
+    {
+        label: 'Edit',
+        submenu: [
+            {role: 'cut'},
+            {role: 'copy'},
+            {role: 'paste'},
+            {role: 'about'}
+        ]
+    }
+]
+
+Menu.setApplicationMenu(Menu.buildFromTemplate(template))
+
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit()
@@ -29,18 +44,6 @@ app.on('activate', () => {
     }
 })
 
-const template = [
-    {
-        label: 'Edit',
-        submenu: [
-            {role: 'cut'},
-            {role: 'copy'},
-            {role: 'paste'},
-            {role: 'about'}
-        ]
-    }
-];
 
-Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 
 
