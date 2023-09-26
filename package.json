@@ -1,0 +1,27 @@
+{
+  "name": "jtmock-app",
+  "version": "1.0.0",
+  "description": "A desktop application app developed using Electron, which can simulate car mounted machine messages and send them to designated communication platforms",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liumapp/jtmock-app.git"
+  },
+  "keywords": [
+    "jt"
+  ],
+  "author": "liumapp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liumapp/jtmock-app/issues"
+  },
+  "homepage": "https://github.com/liumapp/jtmock-app#readme",
+  "devDependencies": {
+    "electron": "^16.0.8",
+    "electron-packager": "^16.0.0"
+  }
+}
