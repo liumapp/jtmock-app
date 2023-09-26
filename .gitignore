@@ -133,4 +133,12 @@ yarn.lock
 .idea
 
 
+target
+
+.DS_Store
+
+*.jar
+
+
+
 
