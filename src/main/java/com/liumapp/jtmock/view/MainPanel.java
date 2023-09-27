@@ -16,7 +16,10 @@ public class MainPanel {
 
     public MainPanel() {
         initComponents();
+        configBtn.doClick();
     }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
