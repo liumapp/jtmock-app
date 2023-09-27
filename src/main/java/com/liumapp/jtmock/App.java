@@ -1,6 +1,7 @@
 package com.liumapp.jtmock;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
+import com.liumapp.jtmock.view.MainPanel;
 
 import javax.swing.*;
 

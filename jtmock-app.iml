@@ -15,6 +15,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="MigLayout" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.20" level="project" />
@@ -26,6 +27,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: com.formdev:flatlaf:2.4" level="project" />
     <orderEntry type="library" name="Maven: com.formdev:flatlaf-intellij-themes:2.4" level="project" />
-    <orderEntry type="library" name="MigLayout" level="project" />
+    <orderEntry type="library" name="Maven: net.miginfocom.miglayout:net.miginfocom.miglayout.swing.bundle:3.7.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.miglayout:miglayout:swing:3.7.3.1" level="project" />
   </component>
 </module>
