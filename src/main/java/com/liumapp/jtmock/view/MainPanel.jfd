@@ -4,17 +4,39 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {space :0:645:x}"
-			"$verticalGroup": "par l {space :0:415:x}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp title:::p::p, comp configBtn:::p:198:p, comp mockBtn:::p:198:p}, space :::p, comp subPanel:::::x}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp title:::p::p, space :p:52:p, comp configBtn:::p:61:p, space s:::p, comp mockBtn:::p:61:p, space ::298:x}, comp subPanel::l:::x}"
 		} ) {
 			name: "panel"
 			"preferredSize": new java.awt.Dimension( 800, 600 )
+			"minimumSize": new java.awt.Dimension( 866, 300 )
 			auxiliary() {
 				"preferredSize.forceValue": true
 			}
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {space :0:648:x}"
+				"$verticalGroup": "par l {space :0:528:x}"
+			} ) {
+				name: "subPanel"
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color white, 1, false )
+				"foreground": sfield java.awt.Color pink
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "configBtn"
+				"text": "通讯配置"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "title"
+				"text": "JTMock"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 15, false )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "mockBtn"
+				"text": "模拟报文"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 645, 415 )
+			"size": new java.awt.Dimension( 860, 530 )
 		} )
 	}
 }
