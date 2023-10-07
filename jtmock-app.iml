@@ -24,11 +24,11 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.20" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.3.20" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: com.formdev:flatlaf:2.4" level="project" />
     <orderEntry type="library" name="Maven: com.formdev:flatlaf-intellij-themes:2.4" level="project" />
     <orderEntry type="library" name="Maven: net.miginfocom.miglayout:net.miginfocom.miglayout.swing.bundle:3.7.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.miglayout:miglayout:swing:3.7.3.1" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.36.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
   </component>
 </module>
