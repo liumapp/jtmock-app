@@ -10,6 +10,7 @@ new FormModel {
 			name: "pannel"
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField1"
+				"text": "101.37.135.193"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
@@ -21,6 +22,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField2"
+				"text": "16739"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"

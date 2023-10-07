@@ -5,10 +5,10 @@
 package com.liumapp.jtmock.view;
 
 import com.liumapp.jtmock.config.MockProperties;
+import com.liumapp.jtmock.remote.NettyChannelInitailizer;
 import com.liumapp.jtmock.remote.NettyTcpClient;
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -19,9 +19,9 @@ import javax.swing.text.StyledDocument;
 /**
  * @author liumapp
  */
-public class ConfigPanel extends JPanel implements ApplicationContextAware {
+public class ConfigPanel extends JPanel {
 
-    private ApplicationContext applicationContext;
+    private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
 
     public JPanel getPannel() {
         return pannel;
@@ -31,24 +31,26 @@ public class ConfigPanel extends JPanel implements ApplicationContextAware {
         initComponents();
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
-
     private void testBtn(ActionEvent e) {
         MockProperties mockProperties = applicationContext.getBean(MockProperties.class);
         mockProperties.setIp(textField1.getText());
         mockProperties.setPort(Integer.parseInt(textField2.getText()));
+
         NettyTcpClient nettyTcpClient = applicationContext.getBean(NettyTcpClient.class);
-//        nettyTcpClient.start(mockProperties.getIp(), mockProperties.getPort(), );
+        NettyChannelInitailizer nettyChannelInitailizer = applicationContext.getBean(NettyChannelInitailizer.class);
+        boolean isSuccess = nettyTcpClient.start(mockProperties.getIp(), mockProperties.getPort(), nettyChannelInitailizer);
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("往通讯服务器: ");
         stringBuilder.append(textField1.getText());
         stringBuilder.append(" 端口:");
         stringBuilder.append(textField2.getText());
-        stringBuilder.append(" 发送终端注册请求报文: ");
+        if (isSuccess) {
+            stringBuilder.append(" 建立连接成功");
+        } else {
+            stringBuilder.append(" 建立连接失败");
+        }
+
         textPane1.setText(stringBuilder.toString());
     }
 
@@ -70,19 +72,24 @@ public class ConfigPanel extends JPanel implements ApplicationContextAware {
 
         //======== pannel ========
         {
-            pannel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,pannel. getBorder
-            ( )) ); pannel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            pannel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+            border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER
+            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font
+            .BOLD,12),java.awt.Color.red),pannel. getBorder()));pannel. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072"
+            .equals(e.getPropertyName()))throw new RuntimeException();}});
+
+            //---- textField1 ----
+            textField1.setText("101.37.135.193");
 
             //---- label1 ----
             label1.setText("\u670d\u52a1\u7aefip\u5730\u5740");
 
             //---- label2 ----
             label2.setText("\u670d\u52a1\u7aef\u901a\u8baf\u7aef\u53e3");
+
+            //---- textField2 ----
+            textField2.setText("16739");
 
             //---- label3 ----
             label3.setText("\u6a21\u62df\u8f66\u8f86\u81ea\u7f16\u53f7");

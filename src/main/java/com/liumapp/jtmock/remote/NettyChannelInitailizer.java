@@ -1,6 +1,8 @@
 package com.liumapp.jtmock.remote;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.SocketChannel;
 
 /**
@@ -12,9 +14,15 @@ import io.netty.channel.socket.SocketChannel;
  */
 public class NettyChannelInitailizer extends ChannelInitializer<SocketChannel> {
 
+    private SimpleChannelInboundHandler<ByteBuf> inboundHandler;
+
+    public NettyChannelInitailizer(SimpleChannelInboundHandler<ByteBuf> inboundHandler) {
+        this.inboundHandler = inboundHandler;
+    }
+
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
-
+        ch.pipeline().addLast(inboundHandler);
     }
 
 }

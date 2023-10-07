@@ -68,11 +68,11 @@ public class NettyTcpClient {
         this(new InetSocketAddress(host, port), channelInitializer);
     }
 
-    public void start(String host, int port, ChannelInitializer channelInitializer) {
-        start(new InetSocketAddress(host, port), channelInitializer);
+    public boolean start(String host, int port, ChannelInitializer channelInitializer) {
+        return start(new InetSocketAddress(host, port), channelInitializer);
     }
 
-    public void start(InetSocketAddress address, ChannelInitializer channelInitializer) {
+    public boolean start(InetSocketAddress address, ChannelInitializer channelInitializer) {
         this.address = address;
         this.channelInitializer = channelInitializer;
 
@@ -92,9 +92,11 @@ public class NettyTcpClient {
 
         try {
             connect();
+            return true;
         } catch (Throwable t) {
             logger.error("[connect] error", t);
         }
+        return false;
     }
 
     protected synchronized void initStatusCheckCommand() {

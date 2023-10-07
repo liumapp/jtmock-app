@@ -6,5 +6,9 @@
 
     <bean id="mockProperties" class="com.liumapp.jtmock.config.MockProperties"></bean>
     <bean id="nettyTcpClient" class="com.liumapp.jtmock.remote.NettyTcpClient"></bean>
+    <bean id="nettyInBoundHandler" class="com.liumapp.jtmock.remote.NettyInBoundHandler"></bean>
+    <bean id="nettyChannelInitailizer" class="com.liumapp.jtmock.remote.NettyChannelInitailizer">
+        <constructor-arg ref="nettyInBoundHandler"></constructor-arg>
+    </bean>
 
 </beans>
