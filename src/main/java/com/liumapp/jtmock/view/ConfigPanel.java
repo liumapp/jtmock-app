@@ -4,6 +4,11 @@
 
 package com.liumapp.jtmock.view;
 
+import com.liumapp.jtmock.config.MockProperties;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -13,7 +18,9 @@ import javax.swing.text.StyledDocument;
 /**
  * @author liumapp
  */
-public class ConfigPanel extends JPanel {
+public class ConfigPanel extends JPanel implements ApplicationContextAware {
+
+    private ApplicationContext applicationContext;
 
     public JPanel getPannel() {
         return pannel;
@@ -23,7 +30,16 @@ public class ConfigPanel extends JPanel {
         initComponents();
     }
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+
     private void testBtn(ActionEvent e) {
+        MockProperties mockProperties = applicationContext.getBean(MockProperties.class);
+        mockProperties.setIp(textField1.getText());
+        mockProperties.setPort(Integer.parseInt(textField2.getText()));
+
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("往通讯服务器: ");
         stringBuilder.append(textField1.getText());
