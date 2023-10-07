@@ -10,7 +10,7 @@ import javax.swing.GroupLayout;
 /**
  * @author liumapp
  */
-public class ConfigPanel {
+public class ConfigPanel extends JPanel {
     public ConfigPanel() {
         initComponents();
     }
@@ -94,7 +94,7 @@ public class ConfigPanel {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - unknown
-    private JPanel pannel;
+    public JPanel pannel;
     private JTextField textField1;
     private JLabel label1;
     private JLabel label2;

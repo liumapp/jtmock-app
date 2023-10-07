@@ -5,6 +5,7 @@
 package com.liumapp.jtmock.view;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -12,14 +13,20 @@ import javax.swing.border.*;
 /**
  * @author liumapp
  */
-public class MainPanel {
+public class MainPanel extends JPanel{
 
     public MainPanel() {
         initComponents();
         configBtn.doClick();
     }
 
-
+    private void manageConfig(ActionEvent e) {
+        ConfigPanel configPanel = new ConfigPanel();
+        subPanel.setLayout(new BorderLayout());
+        subPanel.removeAll();
+        subPanel.add(configPanel.pannel);
+        subPanel.validate();
+    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -34,12 +41,11 @@ public class MainPanel {
         {
             panel.setPreferredSize(new Dimension(800, 600));
             panel.setMinimumSize(new Dimension(866, 300));
-            panel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,panel. getBorder( )) ); panel. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            panel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+            0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
+            red),panel. getBorder()));panel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+            beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
 
             //======== subPanel ========
             {
@@ -60,6 +66,7 @@ public class MainPanel {
 
             //---- configBtn ----
             configBtn.setText("\u901a\u8baf\u914d\u7f6e");
+            configBtn.addActionListener(e -> manageConfig(e));
 
             //---- title ----
             title.setText("JTMock");
@@ -99,7 +106,7 @@ public class MainPanel {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - unknown
-    private JPanel panel;
+    public JPanel panel;
     private JPanel subPanel;
     private JButton configBtn;
     private JLabel title;

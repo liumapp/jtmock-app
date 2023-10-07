@@ -24,6 +24,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "configBtn"
 				"text": "通讯配置"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "manageConfig", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "title"
