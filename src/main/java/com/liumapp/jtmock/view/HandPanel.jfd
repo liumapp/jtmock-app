@@ -1,0 +1,29 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "11.0.9.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :::p, par l {comp scrollPane1:::p:380:p, seq {comp textField1:::p:304:p, space :::p, comp sendBtn:::p::p}}, space :::x}}"
+			"$verticalGroup": "par l {seq l {space :p:14:p, par b {comp textField1::b:p::p, comp sendBtn::b:p::p}, space :::p, comp scrollPane1:::p:225:p, space ::25:x}}"
+		} ) {
+			name: "panel"
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "sendBtn"
+				"text": "发送"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textPane1"
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

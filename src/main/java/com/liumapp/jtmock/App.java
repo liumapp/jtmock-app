@@ -18,7 +18,7 @@ public class App
         mainFrame.setTitle("JTMock");
         mainFrame.setResizable(true);
         MainPanel mainPanel = new MainPanel();
-        mainFrame.setContentPane(mainPanel.panel);
+        mainFrame.setContentPane(mainPanel.getPanel());
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);

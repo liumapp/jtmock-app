@@ -29,7 +29,7 @@ public class ConfigPanel extends JPanel {
         stringBuilder.append(textField1.getText());
         stringBuilder.append(" 端口:");
         stringBuilder.append(textField2.getText());
-        stringBuilder.append(" 发送报文: ");
+        stringBuilder.append(" 发送终端注册请求报文: ");
         textPane1.setText(stringBuilder.toString());
     }
 

@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {comp title:::p::p, comp configBtn:::p:198:p, comp mockBtn:::p:198:p}, space :::p, comp subPanel:::::x}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp title:::p::p, space :p:52:p, comp configBtn:::p:61:p, space s:::p, comp mockBtn:::p:61:p, space ::298:x}, comp subPanel::l:::x}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp title:::p::p, comp configBtn:::p:198:p, comp mockBtn:::p:198:p, comp handBtn:::p:198:p}, space :::p, comp subPanel:::::x}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp title:::p::p, space :p:52:p, comp configBtn:::p:61:p, space s:::p, comp mockBtn:::p:61:p, space u:::p, comp handBtn:::p:61:p, space ::225:x}, comp subPanel::l:::x}"
 		} ) {
 			name: "panel"
 			"preferredSize": new java.awt.Dimension( 800, 600 )
@@ -34,6 +34,11 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "mockBtn"
 				"text": "模拟报文"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "handBtn"
+				"text": "手动发送"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "handBtn", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
