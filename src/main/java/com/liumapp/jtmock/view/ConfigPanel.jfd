@@ -38,7 +38,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "testBtn"
-				"text": "测试连接"
+				"text": "测试连接并保存配置"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "testBtn", true ) )
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {

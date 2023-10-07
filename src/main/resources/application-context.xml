@@ -5,6 +5,6 @@
 
 
     <bean id="mockProperties" class="com.liumapp.jtmock.config.MockProperties"></bean>
-    <bean id="tcpClient" class="com.liumapp.jtmock.remote.TcpClient"></bean>
+    <bean id="nettyTcpClient" class="com.liumapp.jtmock.remote.NettyTcpClient"></bean>
 
 </beans>

@@ -5,6 +5,7 @@
 package com.liumapp.jtmock.view;
 
 import com.liumapp.jtmock.config.MockProperties;
+import com.liumapp.jtmock.remote.NettyTcpClient;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -39,6 +40,8 @@ public class ConfigPanel extends JPanel implements ApplicationContextAware {
         MockProperties mockProperties = applicationContext.getBean(MockProperties.class);
         mockProperties.setIp(textField1.getText());
         mockProperties.setPort(Integer.parseInt(textField2.getText()));
+        NettyTcpClient nettyTcpClient = applicationContext.getBean(NettyTcpClient.class);
+//        nettyTcpClient.start(mockProperties.getIp(), mockProperties.getPort(), );
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("往通讯服务器: ");
@@ -67,14 +70,13 @@ public class ConfigPanel extends JPanel implements ApplicationContextAware {
 
         //======== pannel ========
         {
-            pannel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
-            new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
-            ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-            ,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12)
-            ,java.awt.Color.red),pannel. getBorder()));pannel. addPropertyChangeListener(
-            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            pannel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,pannel. getBorder
+            ( )) ); pannel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
 
             //---- label1 ----
             label1.setText("\u670d\u52a1\u7aefip\u5730\u5740");
@@ -89,7 +91,7 @@ public class ConfigPanel extends JPanel implements ApplicationContextAware {
             label4.setText("\u6a21\u62df\u7ebf\u8def\u7f16\u53f7");
 
             //---- testBtn ----
-            testBtn.setText("\u6d4b\u8bd5\u8fde\u63a5");
+            testBtn.setText("\u6d4b\u8bd5\u8fde\u63a5\u5e76\u4fdd\u5b58\u914d\u7f6e");
             testBtn.addActionListener(e -> testBtn(e));
 
             //======== scrollPane1 ========

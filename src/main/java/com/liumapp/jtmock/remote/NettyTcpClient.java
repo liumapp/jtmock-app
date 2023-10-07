@@ -44,7 +44,6 @@ public class NettyTcpClient {
 
     private ScheduledFuture<?> scheduledFuture;
 
-
     private Bootstrap bootstrap;
 
     private volatile Channel channel;
@@ -62,25 +61,41 @@ public class NettyTcpClient {
     }
 
     public NettyTcpClient(InetSocketAddress address, ChannelInitializer channelInitializer) {
-        this.address = address;
-        this.channelInitializer = channelInitializer;
-        try {
-            doOpen();
-        } catch (Throwable t) {
-            logger.error("[doOpen] error", t);
-        }
-        try {
-            connect();
-        } catch (Throwable t) {
-            logger.error("[connect] error", t);
-        }
+        start(address, channelInitializer);
     }
 
     public NettyTcpClient(String host, int port, ChannelInitializer channelInitializer) {
         this(new InetSocketAddress(host, port), channelInitializer);
     }
 
+    public void start(String host, int port, ChannelInitializer channelInitializer) {
+        start(new InetSocketAddress(host, port), channelInitializer);
+    }
 
+    public void start(InetSocketAddress address, ChannelInitializer channelInitializer) {
+        this.address = address;
+        this.channelInitializer = channelInitializer;
+
+        if (isConnected()) {
+            try {
+                disConnect();
+            } catch (Throwable t) {
+                logger.error("[disConnect] error", t);
+            }
+        }
+
+        try {
+            doOpen();
+        } catch (Throwable t) {
+            logger.error("[doOpen] error", t);
+        }
+
+        try {
+            connect();
+        } catch (Throwable t) {
+            logger.error("[connect] error", t);
+        }
+    }
 
     protected synchronized void initStatusCheckCommand() {
         if (scheduledFuture == null || scheduledFuture.isCancelled()) {
