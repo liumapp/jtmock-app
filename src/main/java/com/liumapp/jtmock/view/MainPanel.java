@@ -24,7 +24,7 @@ public class MainPanel extends JPanel{
         ConfigPanel configPanel = new ConfigPanel();
         subPanel.setLayout(new BorderLayout());
         subPanel.removeAll();
-        subPanel.add(configPanel.pannel);
+        subPanel.add(configPanel.getPannel());
         subPanel.validate();
     }
 

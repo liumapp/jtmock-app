@@ -4,15 +4,33 @@
 
 package com.liumapp.jtmock.view;
 
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.StyledDocument;
 
 /**
  * @author liumapp
  */
 public class ConfigPanel extends JPanel {
+
+    public JPanel getPannel() {
+        return pannel;
+    }
+
     public ConfigPanel() {
         initComponents();
+    }
+
+    private void testBtn(ActionEvent e) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("往通讯服务器: ");
+        stringBuilder.append(textField1.getText());
+        stringBuilder.append(" 端口:");
+        stringBuilder.append(textField2.getText());
+        stringBuilder.append(" 发送报文: ");
+        textPane1.setText(stringBuilder.toString());
     }
 
     private void initComponents() {
@@ -27,16 +45,20 @@ public class ConfigPanel extends JPanel {
         textField3 = new JTextField();
         label4 = new JLabel();
         textField4 = new JTextField();
+        testBtn = new JButton();
+        scrollPane1 = new JScrollPane();
+        textPane1 = new JTextPane();
 
         //======== pannel ========
         {
-            pannel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-            .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing
-            .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-            Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
-            ),pannel. getBorder()));pannel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-            public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName(
-            )))throw new RuntimeException();}});
+            pannel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
+            new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
+            ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+            ,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12)
+            ,java.awt.Color.red),pannel. getBorder()));pannel. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
 
             //---- label1 ----
             label1.setText("\u670d\u52a1\u7aefip\u5730\u5740");
@@ -50,6 +72,15 @@ public class ConfigPanel extends JPanel {
             //---- label4 ----
             label4.setText("\u6a21\u62df\u7ebf\u8def\u7f16\u53f7");
 
+            //---- testBtn ----
+            testBtn.setText("\u6d4b\u8bd5\u8fde\u63a5");
+            testBtn.addActionListener(e -> testBtn(e));
+
+            //======== scrollPane1 ========
+            {
+                scrollPane1.setViewportView(textPane1);
+            }
+
             GroupLayout pannelLayout = new GroupLayout(pannel);
             pannel.setLayout(pannelLayout);
             pannelLayout.setHorizontalGroup(
@@ -57,15 +88,20 @@ public class ConfigPanel extends JPanel {
                     .addGroup(pannelLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(pannelLayout.createParallelGroup()
-                            .addComponent(label4)
-                            .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label3)
-                            .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label2)
-                            .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label1))
-                        .addContainerGap(205, Short.MAX_VALUE))
+                            .addComponent(testBtn)
+                            .addComponent(label1)
+                            .addGroup(pannelLayout.createSequentialGroup()
+                                .addGroup(pannelLayout.createParallelGroup()
+                                    .addComponent(label4)
+                                    .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label3)
+                                    .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label2)
+                                    .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(16, Short.MAX_VALUE))
             );
             pannelLayout.setVerticalGroup(
                 pannelLayout.createParallelGroup()
@@ -73,20 +109,25 @@ public class ConfigPanel extends JPanel {
                         .addGap(16, 16, 16)
                         .addComponent(label1)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(label2)
-                        .addGap(6, 6, 6)
-                        .addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(label3)
-                        .addGap(6, 6, 6)
-                        .addComponent(textField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pannelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pannelLayout.createSequentialGroup()
+                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(label2)
+                                .addGap(6, 6, 6)
+                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(label3)
+                                .addGap(6, 6, 6)
+                                .addComponent(textField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(label4)
+                                .addGap(6, 6, 6)
+                                .addComponent(textField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(scrollPane1))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(label4)
-                        .addGap(6, 6, 6)
-                        .addComponent(textField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(98, Short.MAX_VALUE))
+                        .addComponent(testBtn)
+                        .addContainerGap(56, Short.MAX_VALUE))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
@@ -94,7 +135,7 @@ public class ConfigPanel extends JPanel {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - unknown
-    public JPanel pannel;
+    private JPanel pannel;
     private JTextField textField1;
     private JLabel label1;
     private JLabel label2;
@@ -103,5 +144,8 @@ public class ConfigPanel extends JPanel {
     private JTextField textField3;
     private JLabel label4;
     private JTextField textField4;
+    private JButton testBtn;
+    private JScrollPane scrollPane1;
+    private JTextPane textPane1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
