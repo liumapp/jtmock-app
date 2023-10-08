@@ -5,23 +5,20 @@
 package com.liumapp.jtmock.view;
 
 import com.liumapp.jtmock.config.MockProperties;
+import com.liumapp.jtmock.factory.CustomBeanFactory;
 import com.liumapp.jtmock.remote.NettyChannelInitailizer;
 import com.liumapp.jtmock.remote.NettyTcpClient;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
-import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.StyledDocument;
 
 /**
  * @author liumapp
  */
 public class ConfigPanel extends JPanel {
 
-    private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+
 
     public JPanel getPannel() {
         return pannel;
@@ -32,12 +29,12 @@ public class ConfigPanel extends JPanel {
     }
 
     private void testBtn(ActionEvent e) {
-        MockProperties mockProperties = applicationContext.getBean(MockProperties.class);
+        MockProperties mockProperties = CustomBeanFactory.getMockProperties();
         mockProperties.setIp(textField1.getText());
         mockProperties.setPort(Integer.parseInt(textField2.getText()));
 
-        NettyTcpClient nettyTcpClient = applicationContext.getBean(NettyTcpClient.class);
-        NettyChannelInitailizer nettyChannelInitailizer = applicationContext.getBean(NettyChannelInitailizer.class);
+        NettyTcpClient nettyTcpClient = CustomBeanFactory.getNettyTcpClient();
+        NettyChannelInitailizer nettyChannelInitailizer = CustomBeanFactory.getNettyChannelInitailizer();
         boolean isSuccess = nettyTcpClient.start(mockProperties.getIp(), mockProperties.getPort(), nettyChannelInitailizer);
 
         StringBuilder stringBuilder = new StringBuilder();

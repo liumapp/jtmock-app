@@ -4,6 +4,12 @@
 
 package com.liumapp.jtmock.view;
 
+import com.liumapp.jtmock.config.MockProperties;
+import com.liumapp.jtmock.factory.CustomBeanFactory;
+import com.liumapp.jtmock.remote.NettyTcpClient;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -12,6 +18,7 @@ import javax.swing.GroupLayout;
  * @author liumapp
  */
 public class HandPanel {
+
     public HandPanel() {
         initComponents();
     }
@@ -21,8 +28,19 @@ public class HandPanel {
     }
 
     private void sendBtn(ActionEvent e) {
-        
-        
+        MockProperties mockProperties = CustomBeanFactory.getMockProperties();
+        NettyTcpClient nettyTcpClient = CustomBeanFactory.getNettyTcpClient();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("往通讯服务器: ");
+        stringBuilder.append(mockProperties.getIp());
+        stringBuilder.append(" 端口:");
+        stringBuilder.append(mockProperties.getPort());
+        stringBuilder.append(" 发送报文: ");
+        stringBuilder.append(textField1.getText());
+        nettyTcpClient.send(textField1.getText());
+
+        textPane1.setText(stringBuilder.toString());
     }
 
     private void initComponents() {
