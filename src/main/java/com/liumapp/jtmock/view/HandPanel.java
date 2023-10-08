@@ -7,6 +7,7 @@ package com.liumapp.jtmock.view;
 import com.liumapp.jtmock.config.MockProperties;
 import com.liumapp.jtmock.factory.CustomBeanFactory;
 import com.liumapp.jtmock.remote.NettyTcpClient;
+import com.liumapp.jtmock.utils.ByteUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -38,7 +39,7 @@ public class HandPanel {
         stringBuilder.append(mockProperties.getPort());
         stringBuilder.append(" 发送报文: ");
         stringBuilder.append(textField1.getText());
-        nettyTcpClient.send(textField1.getText());
+        nettyTcpClient.send(ByteUtil.toByteArray(textField1.getText()));
 
         textPane1.setText(stringBuilder.toString());
     }
