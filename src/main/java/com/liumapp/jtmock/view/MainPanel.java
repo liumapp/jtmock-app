@@ -4,6 +4,8 @@
 
 package com.liumapp.jtmock.view;
 
+import com.liumapp.jtmock.factory.CustomBeanFactory;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -33,7 +35,7 @@ public class MainPanel extends JPanel{
     }
 
     private void handBtn(ActionEvent e) {
-        HandPanel handPanel = new HandPanel();
+        HandPanel handPanel = CustomBeanFactory.getHandPanel();
         subPanel.setLayout(new BorderLayout());
         subPanel.removeAll();
         subPanel.add(handPanel.getPanel());

@@ -3,6 +3,7 @@ package com.liumapp.jtmock.factory;
 import com.liumapp.jtmock.config.MockProperties;
 import com.liumapp.jtmock.remote.NettyChannelInitailizer;
 import com.liumapp.jtmock.remote.NettyTcpClient;
+import com.liumapp.jtmock.view.HandPanel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,6 +29,12 @@ public class CustomBeanFactory {
     public static NettyChannelInitailizer getNettyChannelInitailizer() {
         return applicationContext.getBean(NettyChannelInitailizer.class);
     }
+
+    public static HandPanel getHandPanel() {
+        return applicationContext.getBean(HandPanel.class);
+    }
+
+
 
 
 }

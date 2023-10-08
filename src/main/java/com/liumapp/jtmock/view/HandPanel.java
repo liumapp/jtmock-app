@@ -28,6 +28,10 @@ public class HandPanel {
         return panel;
     }
 
+    public JTextPane getTextPane1() {
+        return textPane1;
+    }
+
     private void sendBtn(ActionEvent e) {
         MockProperties mockProperties = CustomBeanFactory.getMockProperties();
         NettyTcpClient nettyTcpClient = CustomBeanFactory.getNettyTcpClient();
@@ -40,8 +44,7 @@ public class HandPanel {
         stringBuilder.append(" 发送报文: ");
         stringBuilder.append(textField1.getText());
         nettyTcpClient.send(ByteUtil.toByteArray(textField1.getText()));
-
-        textPane1.setText(stringBuilder.toString());
+        textPane1.setText(textPane1.getText() + "\n" + stringBuilder.toString());
     }
 
     private void initComponents() {
@@ -55,12 +58,12 @@ public class HandPanel {
 
         //======== panel ========
         {
-            panel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,panel. getBorder( )) ); panel. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            panel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+            .EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER,javax
+            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,
+            12),java.awt.Color.red),panel. getBorder()));panel. addPropertyChangeListener(new java.beans
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
 
             //---- sendBtn ----
             sendBtn.setText("\u53d1\u9001");
@@ -78,12 +81,13 @@ public class HandPanel {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panelLayout.createParallelGroup()
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 304, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sendBtn)))
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(sendBtn)
+                                .addGap(0, 215, Short.MAX_VALUE)))
+                        .addContainerGap())
             );
             panelLayout.setVerticalGroup(
                 panelLayout.createParallelGroup()
@@ -93,8 +97,8 @@ public class HandPanel {
                             .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(sendBtn))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                        .addContainerGap())
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on

@@ -10,5 +10,6 @@
     <bean id="nettyChannelInitailizer" class="com.liumapp.jtmock.remote.NettyChannelInitailizer">
         <constructor-arg ref="nettyInBoundHandler"></constructor-arg>
     </bean>
+    <bean id="handPanel" class="com.liumapp.jtmock.view.HandPanel"></bean>
 
 </beans>
