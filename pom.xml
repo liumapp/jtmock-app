@@ -69,9 +69,23 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>8</source>
-          <target>8</target>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -79,7 +93,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>org.apwj.bearburger.App</mainClass>
+              <mainClass>com.liumapp.jtmock.App</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
